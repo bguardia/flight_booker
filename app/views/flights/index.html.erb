@@ -79,21 +79,21 @@
 <div class="block">
     <% @flights.each do |flight| %>
         <div class="box">
-        <p><%= flight.number %></p>
+        <h3><%= flight.number %></h3>
         <div class="level">
         <div class="level-item">
             <div class="content">
-                <p>Departs</p>
-                <p>Airport (AIR)</p>
-                <p>12:00</p>
+                <p><strong>Departs</strong></p>
+                <p><%= "#{flight.from_airport.name} (#{flight.from_airport.code})"%></p>
+                <p><%= flight.departure_time %></p>
             </div>
         </div>
 
         <div class="level-item">
         <div class="content">
-            <p>Arrives</p>
-            <p>Airport (AIR)</p>
-            <p>15:00</p>
+            <p><strong>Arrives</strong></p>
+            <p><%= "#{flight.to_airport.name} (#{flight.to_airport.code})"%></p>
+            <p><%= flight.arrival_time %></p>
         </div>   
         </div>
 

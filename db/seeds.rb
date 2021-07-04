@@ -44,7 +44,7 @@ puts "Creating flights beginning from #{current_datetime} up to #{weeks_ahead} w
 def advance_time(datetime, elapsed_time)
     hour_offset = elapsed_time[/\d{1,2}(?=:)/].to_i
     min_offset = elapsed_time[/(?<=:)\d{2}/].to_i
-    datetime.advance(hour: hour_offset, min: min_offset)
+    datetime.advance(hours: hour_offset, minutes: min_offset)
 end
 
 def get_departure_datetime(current_date, day_of_flight, time_of_flight)
@@ -57,7 +57,7 @@ def get_departure_datetime(current_date, day_of_flight, time_of_flight)
                          "Saturday" => 6}
 
     day_offset = days_of_the_week[day_of_flight] - current_date.wday
-    departure_datetime = current_date.advance(day: day_offset)
+    departure_datetime = current_date.advance(days: day_offset)
     advance_time(departure_datetime, time_of_flight)
 end
 
@@ -69,7 +69,7 @@ flights.each do |flight_data|
     flight_data[:days].each do |flight_day|
         flight_departure_day_time = get_departure_datetime(current_datetime, flight_day, flight_data[:departure_time])
         weeks_ahead.times do |count|
-            flight_departure_date = flight_departure_day_time.advance(day: 7 * count)
+            flight_departure_date = flight_departure_day_time.advance(days: 7 * count)
             Flight.create(trimmed_flight_data.merge(
                 departure_time: flight_departure_date,
                 arrival_time: advance_time(flight_departure_date, flight_length)
