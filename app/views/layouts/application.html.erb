@@ -11,6 +11,26 @@
   </head>
 
   <body>
+  <% if flash[:alert] %>
+    <div class="notification is-danger global-notification"><%= flash[:alert] %></div>
+  <% elsif flash[:notice] %>
+    <div class="notification is-success global-notification"><%= flash[:notice] %></div>
+  <% end %>
+
+  <nav class="navbar">
+  <div class="navbar-brand">
+  <%= link_to root_path do %>
+  <h1 class="title is-3">Flight Tracker</h1>
+  <% end %>
+
+  <a role="button" class="navbar-burger" aria-label="main" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  </div>
+  
+  </nav>
     <%= yield %>
   </body>
 </html>

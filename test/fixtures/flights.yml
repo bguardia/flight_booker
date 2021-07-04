@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_airport: one
+  to_airport: one
+  departure_time: 2021-06-15 12:57:10
+  arrival_time: 2021-06-15 12:57:10
+  aircraft: MyString
+
+two:
+  from_airport: two
+  to_airport: two
+  departure_time: 2021-06-15 12:57:10
+  arrival_time: 2021-06-15 12:57:10
+  aircraft: MyString

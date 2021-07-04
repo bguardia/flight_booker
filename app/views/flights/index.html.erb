@@ -1,0 +1,109 @@
+<section class="section">
+<div class="columns">
+<div class="column">
+
+<div class="block">
+<form action="/" method="GET">
+
+<div class="level">
+
+    <div class="level-item">
+        <div class="field">
+            <label for="from" class="label">From</label>
+            <div class="control">
+                <div class="select">
+                    <select name="from" id="from">
+                        <% @airports.each do |airport| %>
+                            <option value="<%= airport.id %>"><%= "#{airport.name} (#{airport.code})"%></option>
+                        <% end %>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+
+    <div class="level-item">
+        <div class="field">
+            <label for="to" class="label">To</label>
+            <div class="control">
+                <div class="select">
+                    <select name="to" id="to">
+                        <% @airports.each do |airport| %>
+                            <option value="<%= airport.id %>"><%= "#{airport.name} (#{airport.code})"%></option>
+                        <% end %>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="level-item">
+        <div class="field">
+            <label for="departure" class="label">Date of Departure</label>
+            <div class="control">
+                <input class="input" type="date" id="departure" name="departure">
+            </div>
+        </div>
+    </div>
+
+    <div class="level-item">
+        <div class="field">
+            <label for="passengers" class="label">Number of Passengers</label>
+            <div class="control">
+                <div class="select">
+                    <select name="passengers" id="passengers">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="level-item">
+        <div class="field">
+            <div class="control">
+                <input class="button is-primary" type="submit">
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>
+</div>
+
+<div class="block">
+    <% @flights.each do |flight| %>
+        <div class="box">
+        <p><%= flight.number %></p>
+        <div class="level">
+        <div class="level-item">
+            <div class="content">
+                <p>Departs</p>
+                <p>Airport (AIR)</p>
+                <p>12:00</p>
+            </div>
+        </div>
+
+        <div class="level-item">
+        <div class="content">
+            <p>Arrives</p>
+            <p>Airport (AIR)</p>
+            <p>15:00</p>
+        </div>   
+        </div>
+
+        </div>
+        </div>
+    <% end %>
+</div>
+    
+
+
+</div>
+</div>
+</section>
