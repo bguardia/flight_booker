@@ -3,6 +3,35 @@
 <div class="column is-half is-offset-one-quarter">
 
 <h2 class="title is-2">Book your Flight</h2>
+
+<div class="box">
+        <div class="level">
+            <div class="level-item is-one-quarter">
+            <p class="title is-4"><%= @flight.number %></p>
+            </div>
+        
+            <div class="level-item">
+                <div class="content">
+                    <p>Departs</p>
+                    <p class="has-text-weight-bold"><%= @flight.from_airport.name%> <span class="has-text-primary"><%= @flight.from_airport.code%></span></p>
+                    <p><%= @flight.departure_time.strftime('%b %-d, %Y')%></p>
+                    <p><%= @flight.departure_time.strftime('%H:%M') %></p>
+                </div>
+            </div>
+
+            <div class="level-item">
+            <div class="content">
+                <p>Arrives</p>
+                <p class="has-text-weight-bold"><%= @flight.to_airport.name%> <span class="has-text-primary"><%= @flight.to_airport.code %></span></p>
+                <p><%= @flight.arrival_time.strftime('%b %-d, %Y')%></p>
+                <p><%= @flight.arrival_time.strftime('%H:%M') %></p>
+            </div>   
+            </div>
+
+        </div>
+    </div>
+
+<div class="box">
 <%= form_with model: @booking do |booking_form| %>
     <%= booking_form.hidden_field :flight_id, value: "#{@flight.id}"%>
         
@@ -28,6 +57,7 @@
 
     <%= booking_form.submit class: "button is-primary is-large" %>
 <% end %>
+</div>
 
 </div>
 </div>
