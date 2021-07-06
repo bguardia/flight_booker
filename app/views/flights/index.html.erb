@@ -77,15 +77,15 @@
 </div>
 
 <div class="block">
-    <form action="/book" method="POST">
+    <form action="<%= new_booking_path %>" method="GET">
     <input type="hidden" name="passengers" value="<%= @num_passengers %>">
 
     <% @flights.each do |flight| %>
         <div class="box">
         <div class="level">
         <div class="level-item is-one-quarter">
-        <label class="radio" for="<%= flight.id %>">
-        <input type="radio" name="<%= flight.id %>">
+        <label class="radio" for="flight_id">
+        <input type="radio" name="flight_id" value="<%= flight.id %>">
         <%= flight.number %></label>
         </div>
         
@@ -112,8 +112,8 @@
         </div>
         </div>
 
-        <input class="button is-primary is-large" type="submit" value="Book">
     <% end %>
+    <input class="button is-primary is-large" type="submit" value="Book">
     </form>
 </div>
     

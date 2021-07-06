@@ -1,3 +1,34 @@
-<%= form_with :booking do |booking_form| %>
-    <%= fields_for :passenger_details%>
+<section class="section">
+<div class="columns">
+<div class="column is-half is-offset-one-quarter">
+
+<h2 class="title is-2">Book your Flight</h2>
+<%= form_with model: @booking do |booking_form| %>
+    <%= booking_form.hidden_field :flight_id, value: "#{@flight.id}"%>
+        
+        <% passenger_num = 0 %>
+        <%= booking_form.fields_for :passengers do |passenger_form| %>
+        <% passenger_num += 1 %>
+        <h3 class="title is-5">Passenger <%= passenger_num %></h3>
+            <div class="field">
+                <div class="control">
+                    <%= passenger_form.label :name, class: "label" %>
+                    <%= passenger_form.text_field :name, class: "input" %>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <%= passenger_form.label :email, class: "label" %>
+                    <%= passenger_form.email_field :email, class: "input" %>
+                </div>
+            </div>
+        <% end %>
+
+    
+
+    <%= booking_form.submit class: "button is-primary is-large" %>
 <% end %>
+
+</div>
+</div>
+</section>
