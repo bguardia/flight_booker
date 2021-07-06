@@ -67,7 +67,7 @@
     <div class="level-item">
         <div class="field">
             <div class="control">
-                <input class="button is-primary" type="submit">
+                <input class="button is-info" type="submit" value="Search">
             </div>
         </div>
     </div>
@@ -77,29 +77,44 @@
 </div>
 
 <div class="block">
+    <form action="/book" method="POST">
+    <input type="hidden" name="passengers" value="<%= @num_passengers %>">
+
     <% @flights.each do |flight| %>
         <div class="box">
-        <h3><%= flight.number %></h3>
         <div class="level">
+        <div class="level-item is-one-quarter">
+        <label class="radio" for="<%= flight.id %>">
+        <input type="radio" name="<%= flight.id %>">
+        <%= flight.number %></label>
+        </div>
+        
+
+        
         <div class="level-item">
             <div class="content">
-                <p><strong>Departs</strong></p>
-                <p><%= "#{flight.from_airport.name} (#{flight.from_airport.code})"%></p>
-                <p><%= flight.departure_time %></p>
+                <p>Departs</p>
+                <p class="has-text-weight-bold"><%= flight.from_airport.name%> <span class="has-text-primary"><%= flight.from_airport.code%></span></p>
+                <p><%= flight.departure_time.strftime('%b %-d, %Y')%></p>
+                <p><%= flight.departure_time.strftime('%H:%M') %></p>
             </div>
         </div>
 
         <div class="level-item">
         <div class="content">
-            <p><strong>Arrives</strong></p>
-            <p><%= "#{flight.to_airport.name} (#{flight.to_airport.code})"%></p>
-            <p><%= flight.arrival_time %></p>
+            <p>Arrives</p>
+            <p class="has-text-weight-bold"><%= flight.to_airport.name%> <span class="has-text-primary"><%= flight.to_airport.code %></span></p>
+            <p><%= flight.arrival_time.strftime('%b %-d, %Y')%></p>
+            <p><%= flight.arrival_time.strftime('%H:%M') %></p>
         </div>   
         </div>
 
         </div>
         </div>
+
+        <input class="button is-primary is-large" type="submit" value="Book">
     <% end %>
+    </form>
 </div>
     
 

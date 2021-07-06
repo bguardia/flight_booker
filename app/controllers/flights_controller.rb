@@ -19,6 +19,7 @@ class FlightsController < ApplicationController
                                          depart_day_end: depart_day.end_of_day})
         end
         @airports = Airport.all
+        @num_passengers = flight_params.fetch(:passengers, 0)
     end
 
     private
