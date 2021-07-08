@@ -1,0 +1,48 @@
+<section class="section">
+<div class="columns">
+<div class="column is-half is-offset-one-quarter">
+
+<h2 class="title is-2">Your Booking</h2>
+
+    <div class="box">
+        <div class="level">
+            <div class="level-item is-one-quarter">
+            <p class="title is-4"><%= @flight.number %></p>
+            </div>
+        
+            <div class="level-item">
+                <div class="content">
+                    <p>Departs</p>
+                    <p class="has-text-weight-bold"><%= @flight.from_airport.name%> <span class="has-text-primary"><%= @flight.from_airport.code%></span></p>
+                    <p><%= @flight.departure_time.strftime('%b %-d, %Y')%></p>
+                    <p><%= @flight.departure_time.strftime('%H:%M') %></p>
+                </div>
+            </div>
+
+            <div class="level-item">
+            <div class="content">
+                <p>Arrives</p>
+                <p class="has-text-weight-bold"><%= @flight.to_airport.name%> <span class="has-text-primary"><%= @flight.to_airport.code %></span></p>
+                <p><%= @flight.arrival_time.strftime('%b %-d, %Y')%></p>
+                <p><%= @flight.arrival_time.strftime('%H:%M') %></p>
+            </div>   
+            </div>
+
+        </div>
+    </div>
+
+    <h3 class="title is-4">Passenger Information</h3>
+    <% passenger_num = 0 %>
+    <% @booking.passengers.each do |passenger| %>
+        <% passenger_num += 1 %>
+        <div class="box">
+            <h4 class="title is-5">Passenger <%= passenger_num %></h4>
+            <span class="has-text-weight-bold">Name</span><br/>
+            <span><%= passenger.name %></span><br />
+            <span class="has-text-weight-bold">Email</span><br/>
+            <span><%= passenger.email %></span>
+        </div>
+    <% end %>
+</div>
+</div>
+</section>

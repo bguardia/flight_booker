@@ -78,7 +78,7 @@
 
 <div class="block">
     <form action="<%= new_booking_path %>" method="GET">
-    <input type="hidden" name="passengers" value="<%= @num_passengers %>">
+    <input type="hidden" name="num_passengers" value="<%= @num_passengers %>">
 
     <% @flights.each do |flight| %>
         <%= render "flight_card", flight: flight %>
