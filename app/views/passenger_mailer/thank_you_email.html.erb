@@ -4,11 +4,13 @@
 
 <h2>Your Booking</h2>
 
-<p>Flight Number: <%= @booking.code %></p>
+<p>Flight Number: <%= @booking.flight.number %></p>
 
-<p>Departs <%= @booking.from_airport %></p>
-<p>Date of Departure: <%= @booking.departure_time %></p>
+<p>Departs <%= @booking.flight.from_airport.name %></p>
+<p>Date of Departure: <%= @booking.flight.departure_time %></p>
 
-<p>Arrives <%= @booking.to_airport %></p>
-<p>Date of Arrival: <%= @booking.arrival_time %></p>
+<p>Arrives <%= @booking.flight.to_airport.name %></p>
+<p>Date of Arrival: <%= @booking.flight.arrival_time %></p>
+
+<p><%= link_to "Click here to see your booking online", booking_url(@booking) %></p>
 

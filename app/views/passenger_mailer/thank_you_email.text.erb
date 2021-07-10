@@ -5,10 +5,14 @@ We've included your flight details below.
 
 Your Booking:
 
-Flight Number: <%= @booking.code %>
+Flight Number: <%= @booking.flight.number %>
 
-Departs <%= @booking.from_airport %>
-Date of Departure: <%= @booking.departure_time %>
+Departs <%= @booking.flight.from_airport.name %>
+Date of Departure: <%= @booking.flight.departure_time %>
 
-Arrives <%= @booking.to_airport %>
-Date of Arrival: <%= @booking.arrival_time %>
+Arrives <%= @booking.flight.to_airport.name %>
+Date of Arrival: <%= @booking.flight.arrival_time %>
+
+See your booking online at the link below:
+
+<%= booking_url(@booking) %>
