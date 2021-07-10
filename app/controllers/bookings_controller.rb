@@ -16,11 +16,13 @@ class BookingsController < ApplicationController
     def create
         @flight = Flight.find_by(id: booking_params[:flight_id])
         @booking = Booking.create(flight_id: @flight.id)
-        booking_params[:passengers_attributes].each_value do |passenger|
-            @booking.passengers.create(passenger)
+        booking_params[:passengers_attributes].each_value do |passenger_data|
+            passenger = @booking.passengers.create(passenger_data)
+            PassengerMailer.thank_you_email(passenger, @booking).deliver_later
         end
         flash.now[:notice] = "Your booking has been successfully created!"
         render "show"
+        
     end
 
     private
